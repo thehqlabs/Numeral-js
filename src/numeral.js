@@ -141,7 +141,7 @@
 
             // see if abbreviation is wanted
             if (numeral._.includes(format, 'a')) {
-                abbrForce = format.match(/a(k|m|b|t)?/);
+                abbrForce = format.match(/a(K|M|B|T)?/);
 
                 abbrForce = abbrForce ? abbrForce[1] : false;
 
@@ -150,21 +150,21 @@
                     abbr = ' ';
                 }
 
-                format = format.replace(new RegExp(abbr + 'a[kmbt]?'), '');
+                format = format.replace(new RegExp(abbr + 'a[KMBT]?'), '');
 
                 if (abs >= trillion && !abbrForce || abbrForce === 't') {
                     // trillion
                     abbr += locale.abbreviations.trillion;
                     value = value / trillion;
-                } else if (abs < trillion && abs >= billion && !abbrForce || abbrForce === 'b') {
+                } else if (abs < trillion && abs >= billion && !abbrForce || abbrForce === 'B') {
                     // billion
                     abbr += locale.abbreviations.billion;
                     value = value / billion;
-                } else if (abs < billion && abs >= million && !abbrForce || abbrForce === 'm') {
+                } else if (abs < billion && abs >= million && !abbrForce || abbrForce === 'M') {
                     // million
                     abbr += locale.abbreviations.million;
                     value = value / million;
-                } else if (abs < million && abs >= thousand && !abbrForce || abbrForce === 'k') {
+                } else if (abs < million && !abbrForce || abbrForce === 'K') {
                     // thousand
                     abbr += locale.abbreviations.thousand;
                     value = value / thousand;
@@ -672,10 +672,10 @@
             decimal: '.'
         },
         abbreviations: {
-            thousand: 'k',
-            million: 'm',
-            billion: 'b',
-            trillion: 't'
+            thousand: 'K',
+            million: 'M',
+            billion: 'B',
+            trillion: 'T'
         },
         ordinal: function(number) {
             var b = number % 10;
